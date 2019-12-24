@@ -178,7 +178,7 @@ There's one more typing secret that you can leverage to make writing your code e
 function HandleActions(catAction: {
     Type: "Pet",
     Speed: number,
-    Location: "Back" | "Head" | "Nose";
+    Location: "Back" | "Head" | "Nose",
 } | {
     Type: "Admire",
     Duration: number,
