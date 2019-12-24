@@ -175,7 +175,7 @@ export type WildCat = {
 There's one more typing secret that you can leverage to make writing your code easier out-of-the-gate: You need not go out of scope to declare new types and refine down sub-types.
 
 ``` typescript
-function HandleActions(action: {
+function HandleActions(catAction: {
     Type: "Pet",
     Speed: number,
     Location: "Back" | "Head" | "Nose";
@@ -183,10 +183,10 @@ function HandleActions(action: {
     Type: "Admire",
     Duration: number,
 }) {
-    switch (action.Type) {
+    switch (catAction.Type) {
         case "Pet":
-            const speed = action.Speed;
-            const location = action.Location;
+            const speed = catAction.Speed;
+            const location = catAction.Location;
             // Petting behaviour
         case "Admire":
             ...
@@ -194,7 +194,7 @@ function HandleActions(action: {
 }
 ```
 
-Here the type is essentially anonymous and is described directly alongside the `action` parameter. This is great for types that will be used in only one place and exist for smaller functions. You could imagine having to go back later and split out this declaration into it's own separate `Action` type declaration, which is fine! It's just nice to be able to write it down as you think about it and reform your code later to be more extendable if there's a demand.
+Here the type is essentially anonymous and is described directly alongside the `catAction` parameter. This is great for types that will be used in only one place and exist for smaller functions. You could imagine having to go back later and split out this declaration into it's own separate `CatAction` type declaration, which is fine! It's just nice to be able to write it down as you think about it and reform your code later to be more extendable if there's a demand.
 
 ## Philosophy
 
