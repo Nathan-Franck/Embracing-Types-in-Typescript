@@ -2,11 +2,9 @@
 
 ## Betraying Object Oriented Programming
 
-We've been taught and trained from school and the broad, corporate internet to use Object-Oriented Programming.
-
 Though Object-Oriented Programming is generally effective for designing applications in a waterfall style, it's not very useful to develop in past it's initial design. If at any time there's a change in scope for the project or something in the code has to be replaced or appended, grouping functionality and state into a single Object becomes painful to maintain and detrimental to programming velocity and fulfilling feature requests.
 
-Typescript *technically* **does** allow you to wallow in the old styles of Object-Oriented Programming: It provides Classes, Interfaces, and Methods for you to program how you've been taught in university. However, it also hints at a much brighter and more promising future for programming large applications among a team of programmers, by presenting a new kind of paradym - Types.
+Typescript *technically* **does** allow you to wallow in the old styles of Object-Oriented Programming: It provides Classes, Interfaces, and Methods for you to program how you've been taught in university. However, it also hints at a much brighter and more promising future for programming large applications among a team of programmers, by presenting a new kind of paradigm - Types.
 
 ## Bring Forth the Types
 
@@ -25,11 +23,11 @@ export type CatSearch = {
 }
 ```
 
-This declaration is super dense, but provides a lot of data that can be filled in during the course of the front-end's executition.
+This declaration is super dense, but provides a lot of data that can be filled in during the course of the front-end's execution.
 
-The `?` denotates an optional member. In the case of a search request, this would be appropriate since you don't need to provide all the search criteria to come up with some results.
+The `?` denotes an optional member. In the case of a search request, this would be appropriate since you don't need to provide all the search criteria to come up with some results.
 
-Observe the heavy use of `|` to denotate selecting between different types of member. If we can guarentee the result will either be `Male` or `Female`, then we can ensure that our code can't provide a search request for a Gender that isn't yet handled by the backend.
+Observe the heavy use of `|` to denote selecting between different types of member. If we can guarantee the result will either be `Male` or `Female`, then we can ensure that our code can't provide a search request for a Gender that isn't yet handled by the backend.
 
 You will also notice some nesting of types in this within `OtherFeatures`: We can easily nest types with Typescript and make it super explicit what should be provided in these nested members. It's also super easy later on to remove the nesting and flatten the structure later on if that would make your code appear more coherent.
 
@@ -92,9 +90,9 @@ export function HandleCatResult(result: CatSearchResult) {
 }
 ```
 
-Once we acertain that the `Type` member `== "Photo"`, VSCode will treat the `result` in this `case` context as *exclusively* the `{ Type: "Photo", Url: string }` type and attempting to get an `Age` member from the result will be marked as a syntax error.
+Once we ascertain that the `Type` member `== "Photo"`, VSCode will treat the `result` in this `case` context as *exclusively* the `{ Type: "Photo", Url: string }` type and attempting to get an `Age` member from the result will be marked as a syntax error.
 
-## Refactoring of the Gods
+## Refactoring Made Easy
 
 Ok we wrote our initial solution... but we get feedback and need to add features, make changes and keep up with API updates! Refactoring Types within Typescript is fast and concise. Let's say that later on you find the need to split up the CatSearchResult type into smaller subtypes since it's getting pretty big, well it's *super* quick to accomplish:
 
@@ -145,7 +143,7 @@ export function HandleDatabaseEntryResult (result: ResultTypes.DatabaseEntry) {
 }
 ```
 
-Finally, it's possible to quickly Frankenstein together some new types by using some niche `&` type declarations, if you're short on patience and time, or don't like copy-pasting code:
+Finally, if you need to add some more to your existing types, it's possible to quickly Frankenstein together some new sub-types by using some niche `&` type declarations, if you're short on patience and time, or don't like copy-pasting code:
 
 ```typescript
 // CatSearchResult.ts
@@ -196,11 +194,30 @@ function HandleActions(action: {
 }
 ```
 
-Here the type is essentially anonymous and is described directly alongside the `action` parameter. This is great for types that will be used in only one place and exist for smaller functions. You could imagine having to go back later and split out this declaration into it's own seperate `Action` type declaration, which is fine! It's just nice to be able to write it down as you think about it and reform your code later to be more extendable if there's a demand.
+Here the type is essentially anonymous and is described directly alongside the `action` parameter. This is great for types that will be used in only one place and exist for smaller functions. You could imagine having to go back later and split out this declaration into it's own separate `Action` type declaration, which is fine! It's just nice to be able to write it down as you think about it and reform your code later to be more extendable if there's a demand.
 
 ## Philosophy
 
+So why bother pursuing Types versus just staying with Classes, Methods and Interfaces?
+
+For me, I find that the ability to quickly mock up code that works and refactor safely later is a huge boost to my productivity. If you've ever been successful writing essays in multiple passes where you dump your ideas down first and determine structure and organization second, you understand this kind of programming style. I find that Typescript is a unique language in how it supports this kind of habit.
+
+I still find myself gravitating towards classes on occasion, don't get me wrong, for data structures like lists and dictionaries they are a perfect match. **However**, for business logic, the core unique defining functionality of your apps, I don't see classes being very useful. You will be changing your code, requirements seldom remain constant, so that over time the class structures and hierarchies you so neatly defined will become a prison that feels nigh impossible to break out of.
+
+In contrast, writing code with Functions and Types has a very different vibe, where the dependency structure can be very fluid and free. Though I may still be on my Honeymoon phase, having only written maybe 8000 lines of Typescript code versus hundreds of thousands of lines of C# code.
+
+One thing that is a clear advantage of classes is the ability for basically all IDEs including VSCode to suggest things that an object can do [Methods], as well as their properties. For those learning a new programming language or API, being able to have VSCode tell you what you can do with certain objects is great as it opens up the programmer to learning more about the tools available to them. As such, I think there's an extension that could be made here: Adding a shortcut / tooltip that searches your codebase for all Functions that take a given object as a parameter. Having that kind of automatic guidance would mean the world to people that are trying to make their way around a codebase they didn't write.
 
 ## Summary
 
-The easiest way to figure out how Typing can serve you in Typescript is to start writing code and seeing what syntax errors and member suggestions pop up as you code.
+The easiest way to figure out how Typing can serve you in Typescript is to start writing code and seeing what syntax errors and member suggestions pop up as you code. The ideas and suggestions shown here are far from all that can be done with enough experimentation in VSCode. Also, read the Typescript documentation! With any luck you will find yourself more empowered to program in ways you're not normally used to and increase the number of tools in your toolbelt.
+
+## Resources
+
+* Typescript Docs, Basic Types - https://www.typescriptlang.org/docs/handbook/basic-types.html
+* Typescript Docs, Advanced Types - https://www.typescriptlang.org/docs/handbook/advanced-types.html
+
+## References / Inspiration
+* The Wrong Abstraction - https://www.sandimetz.com/blog/2016/1/20/the-wrong-abstraction
+* All the Little Things - https://www.youtube.com/watch?v=8bZh5LMaSmE
+* Object-Oriented Programming is Bad - https://www.youtube.com/watch?v=QM1iUe6IofM
