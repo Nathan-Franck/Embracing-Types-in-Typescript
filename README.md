@@ -195,7 +195,7 @@ function HandleActions(catAction: {
 ```
 
 Here the type is essentially anonymous and is described directly alongside the `catAction` parameter. This is great for types that will be used in only one place and exist for smaller functions. You could imagine having to go back later and split out this declaration into it's own separate `CatAction` type declaration, which is fine! It's just nice to be able to write it down as you think about it and reform your code later to be more extendable if there's a demand.
-
+x   
 ## Philosophy
 
 So why bother pursuing Types versus just staying with Classes, Methods and Interfaces?
@@ -206,7 +206,9 @@ I still find myself gravitating towards classes on occasion, don't get me wrong,
 
 In contrast, writing code with Functions and Types has a very different vibe, where the dependency structure can be very fluid and free. Though I may still be on my Honeymoon phase, having only written maybe 8000 lines of Typescript code versus hundreds of thousands of lines of C# code.
 
-One thing that is a clear advantage of classes is the ability for basically all IDEs including VSCode to suggest things that an object can do [Methods], as well as their properties. For those learning a new programming language or API, being able to have VSCode tell you what you can do with certain objects is great as it opens up the programmer to learning more about the tools available to them. As such, I think there's an extension that could be made here: Adding a shortcut / tooltip that searches your codebase for all Functions that take a given object as a parameter. Having that kind of automatic guidance would mean the world to people that are trying to make their way around a codebase they didn't write.
+One thing that is a clear advantage of classes is the ability for basically all IDEs including VSCode to suggest things that an object can do [Methods], as well as their properties. For those learning a new programming language or API, being able to have VSCode tell you what you can do with certain objects is great as it opens up the programmer to learning more about the tools available to them.
+
+As such, I think there's an extension that could be made here: Adding a shortcut / tooltip that searches your codebase for all Functions that take a given object as a parameter. Having that kind of automatic guidance would mean the world to people that are trying to make their way around a codebase they didn't write.
 
 ## Summary
 
