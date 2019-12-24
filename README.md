@@ -208,7 +208,7 @@ In contrast, writing code with Functions and Types has a very different vibe, wh
 
 One thing that is a clear advantage of classes is the ability for basically all IDEs including VSCode to suggest things that an object can do [Methods], as well as their properties. For those learning a new programming language or API, being able to have VSCode tell you what you can do with certain objects is great as it opens up the programmer to learning more about the tools available to them.
 
-As such, I think there's an extension that could be made here: Adding a shortcut / tooltip that searches your codebase for all Functions that take a given object as a parameter. Having that kind of automatic guidance would mean the world to people that are trying to make their way around a codebase they didn't write.
+As such, I think there's an extension that could be made here: Adding a shortcut / tooltip that searches your codebase for all Functions that take a given object as a parameter. Having that kind of automatic guidance would mean the world to people that are trying to make their way around a codebase they didn't write. Maybe it could even help the original author discover associations in his code he didn't think already existed.
 
 ## Summary
 
