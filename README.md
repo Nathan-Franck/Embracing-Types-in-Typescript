@@ -4,7 +4,7 @@
 
 Though Object-Oriented Programming is generally effective for designing applications in a waterfall style, it's not very useful to develop in past it's initial design. If at any time there's a change in scope for the project or something in the code has to be replaced or appended, grouping functionality and state into a single Object becomes painful to maintain and detrimental to programming velocity and fulfilling feature requests.
 
-Typescript *technically* **does** allow you to wallow in the old styles of Object-Oriented Programming: It provides Classes, Interfaces, and Methods for you to program how you've been taught in university. However, it also hints at a much brighter and more promising future for programming large applications among a team of programmers, by presenting a new kind of paradigm - Types.
+Typescript *technically* **does** allow you to wallow in the old styles of Object-Oriented Programming: It provides Classes, Interfaces, and Methods for you to program how you've been taught in university. However, it also hints at a much more fast and efficient future for programming large applications among a team of programmers, by presenting a new kind of paradigm - Types.
 
 ## Bring Forth the Types
 
@@ -29,7 +29,7 @@ The `?` denotes an optional member. In the case of a search request, this would 
 
 Observe the heavy use of `|` to denote selecting between different types of member. If we can guarantee the result will either be `Male` or `Female`, then we can ensure that our code can't provide a search request for a Gender that isn't yet handled by the backend.
 
-You will also notice some nesting of types in this within `OtherFeatures`: We can easily nest types with Typescript and make it super explicit what should be provided in these nested members. It's also super easy later on to remove the nesting and flatten the structure later on if that would make your code appear more coherent.
+You will also notice some nesting of types in this within `OtherFeatures`: We can easily nest types with Typescript and make it super explicit what should be provided in these nested members. It would be easy enough to remove the nesting and flatten the structure later on if that would make your code appear more coherent.
 
 When we're making a request from the frontend we may start with creating a variable like this:
 
@@ -69,9 +69,9 @@ export type CatSearchResult = {
 }
 ```
 
-Maybe your search can provide a set of different types of results, either a cat result stored directly in the server's database, a reference to a photo of a cat, or a reference to an external database that the front-end can poll later on using the provided format for polling.
+Maybe your search can provide a set of different types of results, either a cat result stored directly in the server's database, a reference to a photo of a cat, or a reference to an external database that the front-end can poll later on using the provided format for polling. For this case I've concatenated 3 types together using `|` characters. 
 
-For this case I've concatenated 3 types together using `|` characters. Handling this combined type is pretty intuitive in VSCode:
+Handling this combined type is pretty intuitive in VSCode:
 
 ``` typescript
 // CatSearchHandler.ts
@@ -90,11 +90,11 @@ export function HandleCatResult(result: CatSearchResult) {
 }
 ```
 
-Once we ascertain that the `Type` member `== "Photo"`, VSCode will treat the `result` in this `case` context as *exclusively* the `{ Type: "Photo", Url: string }` type and attempting to get an `Age` member from the result will be marked as a syntax error.
+Once we ascertain that the `Type` member `== "Photo"`, VSCode will treat the `result` in this `case` context as *exclusively* the `{ Type: "Photo", Url: string }` type. So if we attempted to get an `Age` member from the result will be marked as a syntax error.
 
 ## Refactoring Made Easy
 
-Ok we wrote our initial solution... but we get feedback and need to add features, make changes and keep up with API updates! Refactoring Types within Typescript is fast and concise. Let's say that later on you find the need to split up the CatSearchResult type into smaller subtypes since it's getting pretty big, well it's *super* quick to accomplish:
+Ok we wrote our initial solution... but we get feedback that spurs us into adding more features and making changes to existing code. Refactoring Types within Typescript is fast and concise. Let's say that later on you find the need to split up the CatSearchResult type into smaller subtypes since it's getting pretty big, well it's *super* quick to accomplish:
 
 ``` typescript
 // CatSearchResult.ts
