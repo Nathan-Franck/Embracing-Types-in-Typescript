@@ -124,7 +124,7 @@ export type CatSearchResult = // Keep the original type together by combining th
 
 Here, `namespace` is used to allow us to use simple names like Cat and Photo without worrying about naming conflicts in another area of our code.
 
-Once the type is split up this way, we could have smaller search result handling functions that specifically handle the `CatSearchResult.DatabaseEntry` sub-type:
+Once the type is split up this way, we could have smaller search result handling functions that specifically handle the `ResultTypes.DatabaseEntry` sub-type:
 
 ``` typescript 
 // CatSearchHandler.ts
