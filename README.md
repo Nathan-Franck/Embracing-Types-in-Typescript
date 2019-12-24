@@ -1,10 +1,14 @@
 # Embracing Types in Typescript
 
+## Betraying Object Oriented Programming
+
 We've been taught and trained from school and the broad, corporate internet to use Object-Oriented Programming.
 
 Though Object-Oriented Programming is generally effective for designing applications in a waterfall style, it's not very useful to develop in past it's initial design. If at any time there's a change in scope for the project or something in the code has to be replaced or appended, grouping functionality and state into a single Object becomes painful to maintain and detrimental to programming velocity and fulfilling feature requests.
 
 Typescript *technically* **does** allow you to wallow in the old styles of Object-Oriented Programming: It provides Classes, Interfaces, and Methods for you to program how you've been taught in university. However, it also hints at a much brighter and more promising future for programming large applications among a team of programmers, by presenting a new kind of paradym - Types.
+
+## Bring Forth the Types
 
 Lets say you have a JSON format to send to your backend to your frontend and you know what the format is, you can declare that format as a Type:
 
@@ -35,7 +39,7 @@ When we're making a request from the frontend we may start with creating a varia
 let search: CatSearch = {};
 ```
 
-and filling it in using data from Angular or something:
+and filling it in using data from JQuery or something:
 
 ``` typescript
 search.PredominantColor = $('.PredominantColorField').value;
@@ -88,13 +92,15 @@ export function HandleCatResult(result: CatSearchResult) {
 }
 ```
 
-Once we acertain that the member `Type` is a "Photo", VSCode will treat the `result` in this `case` context as *exclusively* the `{ Type: "Photo", Url: string }` type and trying to get an `Age` member from the result will be marked as a syntax error.
+Once we acertain that the `Type` member `== "Photo"`, VSCode will treat the `result` in this `case` context as *exclusively* the `{ Type: "Photo", Url: string }` type and attempting to get an `Age` member from the result will be marked as a syntax error.
 
-Later on you may find the need to split up this result type, and it's *super* quick to accomplish!
+## Refactoring of the Gods
+
+Ok we wrote our initial solution... but we get feedback and need to add features, make changes and keep up with API updates! Refactoring Types within Typescript is fast and concise. Let's say that later on you find the need to split up the CatSearchResult type into smaller subtypes since it's getting pretty big, well it's *super* quick to accomplish:
 
 ``` typescript
 // CatSearchResult.ts
-export namespace ResultTypes {
+export namespace ResultTypes { // Group sub-types in a namespace
     export type Cat = {
         Type: "Cat",
         Name: string,
@@ -112,18 +118,18 @@ export namespace ResultTypes {
     }
 }
 
-export type CatSearchResult =
+export type CatSearchResult = // Keep the original type together by combining the sub-types
     ResultTypes.Cat |
     ResultTypes.Photo |
     ResultTypes.DatabaseEntry;
 ```
 
-Here, namespace is used to allow us to use simple names like Cat and Photo without worrying about naming conflicts in another area of our code.
+Here, `namespace` is used to allow us to use simple names like Cat and Photo without worrying about naming conflicts in another area of our code.
 
-Once it's split up this way, we could have smaller search result handling functions that specifically handle the CatSearchResult.DatabaseEntry type:
+Once the type is split up this way, we could have smaller search result handling functions that specifically handle the `CatSearchResult.DatabaseEntry` sub-type:
 
 ``` typescript 
-// CatSearchResult.ts
+// CatSearchHandler.ts
 ...
 
 import { ResultTypes } from "CatSearchResult.ts"
@@ -139,7 +145,7 @@ export function HandleDatabaseEntryResult (result: ResultTypes.DatabaseEntry) {
 }
 ```
 
-Finally, it's possible to quickly make frankenstein types by using some niche `&` type declarations, if you're short on patience and time, or don't like copy-pasting code:
+Finally, it's possible to quickly Frankenstein together some new types by using some niche `&` type declarations, if you're short on patience and time, or don't like copy-pasting code:
 
 ```typescript
 // CatSearchResult.ts
@@ -147,6 +153,7 @@ export namespace ResultTypes {
     ...
     export type WildCat = Cat & {
         Type: "WildCat",
+        Species: "Bobcat" | "Puma" | "Leopard",
         NaturalRange: string,
     }
 }
@@ -157,6 +164,7 @@ Which is the same as a more verbose declaration - manually combining the members
 ``` typescript
 export type WildCat = {
     Type: "WildCat",
+    Species: "Bobcat" | "Puma" | "Leopard",
     Name: string,
     Age: number,
     Gender: "Male" | "Female",
@@ -164,8 +172,35 @@ export type WildCat = {
 }
 ```
 
+## Inlining Type Declarations
+
+There's one more typing secret that you can leverage to make writing your code easier out-of-the-gate: You need not go out of scope to declare new types and refine down sub-types.
+
+``` typescript
+function HandleActions(action: {
+    Type: "Pet",
+    Speed: number,
+    Location: "Back" | "Head" | "Nose";
+} | {
+    Type: "Admire",
+    Duration: number,
+}) {
+    switch (action.Type) {
+        case "Pet":
+            const speed = action.Speed;
+            const location = action.Location;
+            // Petting behaviour
+        case "Admire":
+            ...
+    }
+}
+```
+
+Here the type is essentially anonymous and is described directly alongside the `action` parameter. This is great for types that will be used in only one place and exist for smaller functions. You could imagine having to go back later and split out this declaration into it's own seperate `Action` type declaration, which is fine! It's just nice to be able to write it down as you think about it and reform your code later to be more extendable if there's a demand.
+
 ## Philosophy
-    
+
 
 ## Summary
 
+The easiest way to figure out how Typing can serve you in Typescript is to start writing code and seeing what syntax errors and member suggestions pop up as you code.
