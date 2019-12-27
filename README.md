@@ -6,7 +6,7 @@ So you've jumped into coding with Typescript cause it's part of your job descrip
 
 Types are basically Interfaces, but declared a little differently. However, this ends up being a big enough distinction to warrant explaining it further with some examples, since there's some unique characteristics you won't find in any other language. Don't worry if these examples go over your head, I think it's better to have more challenging code to try and parse that is more realistic to a real implementation vs. having overly simplified examples. Let it challenge you and help you to research it later and think bigger! That all being said...
 
-## Bring Forth the Types
+## Bring Forth the Types!
 
 Lets say you have a JSON format to send to your backend to your frontend and you know what the format is, you can declare that format as a Type:
 
