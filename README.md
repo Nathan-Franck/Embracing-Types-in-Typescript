@@ -198,11 +198,9 @@ Here the type is essentially anonymous and is described directly alongside the `
 
 ## Philosophy
 
-So why bother pursuing Types versus just staying with Classes, Methods and Interfaces?
-
 For me, I find that the ability to quickly mock up code that works and refactor safely later is a huge boost to my productivity. If you've ever been successful writing essays in multiple passes where you dump your ideas down first and determine structure and organization second, you understand this kind of programming style. I find that Typescript is a unique language in how it supports this kind of habit.
 
-One thing that is a clear advantage of classes is the ability for basically all IDEs including VSCode to suggest things that an object can do [Methods], as well as their properties. For those learning a new programming language or API, being able to have VSCode tell you what you can do with certain objects is great as it opens up the programmer to learning more about the tools available to them.
+One thing that is a clear advantage of Classes and Methods is the ability for basically all IDEs including VSCode to suggest things that an object can do [Methods], as well as their properties. For those learning a new programming language or API, being able to have VSCode tell you what you can do with certain objects is great as it opens up the programmer to learning more about the tools available to them.
 
 As such, I think there's an extension that could be made here: Adding a shortcut / tooltip that searches your codebase for all Functions that take a given object as a parameter. Having that kind of automatic guidance would mean the world to people that are trying to make their way around a codebase they didn't write. Maybe it could even help the original author discover associations in his code he didn't think already existed.
 
