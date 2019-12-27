@@ -202,10 +202,6 @@ So why bother pursuing Types versus just staying with Classes, Methods and Inter
 
 For me, I find that the ability to quickly mock up code that works and refactor safely later is a huge boost to my productivity. If you've ever been successful writing essays in multiple passes where you dump your ideas down first and determine structure and organization second, you understand this kind of programming style. I find that Typescript is a unique language in how it supports this kind of habit.
 
-I still find myself gravitating towards classes on occasion, don't get me wrong, for data structures like lists and dictionaries they are a perfect match. **However**, for business logic, the core unique defining functionality of your apps, I don't see classes being very useful. You will be changing your code, requirements seldom remain constant, so that over time the class structures and hierarchies you so neatly defined will become a prison that feels nigh impossible to break out of.
-
-In contrast, writing code with Functions and Types has a very different vibe, where the dependency structure can be very fluid and free. Though I may still be on my Honeymoon phase, having only written maybe 8000 lines of Typescript code versus hundreds of thousands of lines of C# code.
-
 One thing that is a clear advantage of classes is the ability for basically all IDEs including VSCode to suggest things that an object can do [Methods], as well as their properties. For those learning a new programming language or API, being able to have VSCode tell you what you can do with certain objects is great as it opens up the programmer to learning more about the tools available to them.
 
 As such, I think there's an extension that could be made here: Adding a shortcut / tooltip that searches your codebase for all Functions that take a given object as a parameter. Having that kind of automatic guidance would mean the world to people that are trying to make their way around a codebase they didn't write. Maybe it could even help the original author discover associations in his code he didn't think already existed.
