@@ -1,10 +1,10 @@
 # Embracing Types in Typescript
 
-## Betraying Object Oriented Programming
+## There's a New Kid on the Block
 
-Though Object-Oriented Programming is generally effective for designing applications in a waterfall style, it's not very useful to develop in past it's initial design. If at any time there's a change in scope for the project or something in the code has to be replaced or appended, grouping functionality and state into a single Object becomes painful to maintain and detrimental to programming velocity and fulfilling feature requests.
+So you've jumped into coding with Typescript cause it's part of your job description, and you're seeing some familiar OOP concepts to work with, Classes, Methods, Interfaces, works great, almost as good as C# even! But what's this crazy thing they're hinting about in the official Typescript documentation? Types???
 
-Typescript *technically* **does** allow you to wallow in the old styles of Object-Oriented Programming: It provides Classes, Interfaces, and Methods for you to program how you've been taught in university. However, it also hints at a much more fast and efficient future for programming large applications among a team of programmers, by presenting a new kind of paradigm - Types.
+Types are basically Interfaces, but declared a little differently. However, this ends up being a big enough distinction to warrant explaining it further with some examples, since there's some unique characteristics you won't find in any other language. Don't worry if these examples go over your head, I think it's better to have more challenging code to try and parse that is more realistic to a real implementation vs. having overly simplified examples. Let it challenge you and help you to research it later and think bigger! That all being said...
 
 ## Bring Forth the Types
 
